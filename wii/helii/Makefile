@@ -25,7 +25,7 @@ INCLUDES	:=
 # options for code generation
 #---------------------------------------------------------------------------------
 
-CFLAGS	= -g -O0 -mrvl -Wall $(MACHDEP) $(INCLUDE) -I$(DEVKITPPC)/local/include
+CFLAGS	= -g -O0 -mrvl -Wall $(MACHDEP) $(INCLUDE) -I$(DEVKITPPC)/local/include `freetype-config --cflags`
 CXXFLAGS	=	$(CFLAGS)
 
 LDFLAGS	=	-g $(MACHDEP) -mrvl -Wl,-Map,$(notdir $@).map
@@ -33,13 +33,13 @@ LDFLAGS	=	-g $(MACHDEP) -mrvl -Wl,-Map,$(notdir $@).map
 #-----------------------------------line *0x800656d4----------------------------------------------
 # any extra libraries we wish to link with the project
 #---------------------------------------------------------------------------------
-LIBS	:=	-lwiisprite -lpng -lz -lwiiuse -lbte -lfat -logc -lm 
+LIBS	:=	`freetype-config --libs` -lwiisprite -lpng -lz -lwiiuse -lbte -lfat -logc -lm
 
 #---------------------------------------------------------------------------------
 # list of directories containing libraries, this must be the top level containing
 # include and lib
 #---------------------------------------------------------------------------------
-LIBDIRS	:= 
+LIBDIRS	:= $(PORTLIBS)
 
 #---------------------------------------------------------------------------------
 # no real need to edit anything past this point unless you need to add additional

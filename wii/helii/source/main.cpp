@@ -196,7 +196,7 @@ int main(int argc, char **argv) {
 		if (thePlayer.GetY() < -100)	// If the player flies off-screen
 			break;						// 		we're done.
 		thePlayer.Draw();				// Draw the player
-		int green = 30 - (0.3 * closingTicks);
+		u8 green = 30 - (0.3 * closingTicks);
 		if (green < 0) green = 0;
 		gwd.SetBackground((GXColor){ 0, green, 0, 255 });	// Fade to black
 		gwd.Flush();					
